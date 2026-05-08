@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <title>DeepShield AI</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>DeepShield AI</h1>
+
+        <p>
+            AI-powered deepfake detection platform
+        </p>
+
+        <form
+            method="POST"
+            enctype="multipart/form-data"
+        >
+
+            <input
+                type="file"
+                name="image"
+                required
+            >
+
+            <br>
+
+            <button type="submit">
+                Detect Deepfake
+            </button>
+
+        </form>
+
+        {% if result %}
+
+        <div class="result">
+
+            <h2>Detection Result</h2>
+
+            <p>
+                Prediction:
+                {{ result }}
+            </p>
+
+            <p>
+                Confidence:
+                {{ confidence }}%
+            </p>
+
+            <img
+                src="{{ url_for('static', filename='uploads/' + filename) }}"
+                width="300"
+            >
+
+        </div>
+
+        {% endif %}
+
+    </div>
+
+</body>
+
+</html>
